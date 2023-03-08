@@ -1,17 +1,13 @@
-//
-//  iDineApp.swift
-//  iDine
-//
-//  Created by Davit Hayrapetyan on 07.03.23.
-//
-
 import SwiftUI
 
-@main
+ @main
 struct iDineApp: App {
+    @StateObject var order = Order()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(order)
         }
     }
 }
