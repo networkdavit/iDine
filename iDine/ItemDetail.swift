@@ -3,6 +3,8 @@ import SwiftUI
 struct ItemDetail: View {
     let item: MenuItem
     @EnvironmentObject var order: Order
+    @State private var orderAdded = false
+
     
     var body: some View {
         VStack{
@@ -23,8 +25,12 @@ struct ItemDetail: View {
             
             Button("Order this"){
                 order.add(item: item)
+                orderAdded = true
             }
             .buttonStyle(.borderedProminent)
+            .alert(isPresented: $orderAdded){
+                Alert(title: Text("Added to cart"), dismissButton: .default(Text("OK")))
+            }
             
             Spacer()
         }
